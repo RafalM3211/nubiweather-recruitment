@@ -24,7 +24,7 @@ export default function WeatherCard() {
           sx={{ m: "10px", height: 140, width: 140 }}
           image={weatherIcon}
           title="green iguana"
-        ></CardMedia>
+        />
         <CardContent sx={{ display: "flex", gap: "1em" }}>
           <Typography variant="h3" component="p">
             26{"\u00B0"}C

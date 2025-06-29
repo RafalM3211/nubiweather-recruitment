@@ -2,7 +2,7 @@ import { Container, Box, Typography } from "@mui/material";
 import nubisoftBgLogo from "./assets/nubisoftTransparent.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
-import WeatherCard from "./components/WeatherCard/WeatherCard";
+import CardGroup from "./components/CardGroup/CardGroup";
 
 function App() {
   return (
@@ -45,8 +45,8 @@ function App() {
               gap: "3em",
             }}
           >
-            <WeatherCard />
-            <WeatherCard />
+            <CardGroup />
+            <CardGroup />
           </Box>
         </Container>
       </Box>
