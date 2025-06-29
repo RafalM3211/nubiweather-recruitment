@@ -36,7 +36,15 @@ function App() {
               NubiWeather
             </Typography>
           </Box>
-          <Box sx={{ mt: "3em", display: "flex", gap: "3em" }}>
+          <Box
+            sx={{
+              mt: "3em",
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              gap: "3em",
+            }}
+          >
             <WeatherCard />
             <WeatherCard />
           </Box>

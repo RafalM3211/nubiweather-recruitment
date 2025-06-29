@@ -3,7 +3,7 @@ import weatherIcon from "../../assets/weatherIcon.svg";
 
 export default function WeatherCard() {
   return (
-    <Card>
+    <Card sx={{ minWidth: "fit-content", fontSize: "1em" }}>
       <CardContent
         sx={{
           display: "flex",
