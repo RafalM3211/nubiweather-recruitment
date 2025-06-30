@@ -1,35 +1,29 @@
-import {
-  Paper,
-  Card,
-  CardHeader,
-  CardContent,
-  CardMedia,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Paper, CardMedia, Typography } from "@mui/material";
 import weatherIcon from "../../assets/weatherIcon.svg";
 
 export default function ForecastCard() {
   return (
     <Paper
       sx={{
-        width: "20%",
+        width: "18%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        cursor: "pointer",
+        userSelect: "none",
       }}
     >
-      <Box sx={{ py: "5px" }}>
-        <Typography variant="h6">jutro</Typography>
-      </Box>
+      <Typography sx={{ py: "5px" }} variant="h6">
+        jutro
+      </Typography>
       <CardMedia
-        sx={{ height: 40, width: 40 }}
+        sx={{ height: 35, width: 40 }}
         image={weatherIcon}
         title="slonecznie"
       />
-      <Box sx={{ py: "5px" }}>
-        <Typography variant="body2">26{"\u00B0"}C</Typography>
-      </Box>
+      <Typography sx={{ py: "5px" }} variant="body2">
+        26{"\u00B0"}C
+      </Typography>
     </Paper>
   );
 }

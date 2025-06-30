@@ -21,7 +21,11 @@ export default function WeatherCard() {
       </CardContent>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <CardMedia
-          sx={{ m: "10px", height: 140, width: 140 }}
+          sx={{
+            m: "10px",
+            height: "min(140px, 23vw)",
+            width: "min(140px, 23vw)",
+          }}
           image={weatherIcon}
           title="green iguana"
         />

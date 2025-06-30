@@ -6,7 +6,13 @@ export default function CardGroup() {
   return (
     <Box>
       <WeatherCard />
-      <Box>
+      <Box
+        sx={{ mt: "10px", display: "flex", justifyContent: "space-between" }}
+      >
+        <ForecastCard />
+        <ForecastCard />
+        <ForecastCard />
+        <ForecastCard />
         <ForecastCard />
       </Box>
     </Box>
