@@ -1,4 +1,4 @@
-import { Container, Box, Typography } from "@mui/material";
+import { Container, Box, Typography, Link } from "@mui/material";
 import nubisoftBgLogo from "./assets/nubisoftTransparent.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
@@ -16,8 +16,9 @@ function App() {
           justifyContent: "center",
           alignItems: "center",
 
-          background: `url(${nubisoftBgLogo}) no-repeat  -10vw 15vh`,
-          backgroundSize: "contain",
+          background: `url(${nubisoftBgLogo}) no-repeat`,
+          backgroundPosition: { xs: "-50vw 10vh", sm: "-10vw 15vh" },
+          backgroundSize: { xs: "cover", sm: "contain" },
         }}
       >
         <Container maxWidth="lg">
@@ -29,9 +30,21 @@ function App() {
               gap: "2em",
             }}
           >
-            <a href="https://nubisoft.io/" target="_blank">
-              <img src={nubisoftLogo} className="" alt="Nubisoft logo" />
-            </a>
+            <Link
+              href="https://nubisoft.io/"
+              target="_blank"
+              sx={{
+                display: "block",
+                width: { xs: "17vw", sm: "fit-content" },
+              }}
+            >
+              <img
+                style={{ width: "100%" }}
+                src={nubisoftLogo}
+                className=""
+                alt="Nubisoft logo"
+              />
+            </Link>
             <Typography variant="h2" component="h1">
               NubiWeather
             </Typography>
