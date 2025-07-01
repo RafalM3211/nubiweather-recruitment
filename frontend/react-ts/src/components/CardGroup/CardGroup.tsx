@@ -25,10 +25,7 @@ export default function CardGroup(props: Props) {
   const [selectedDay, setSelectedDay] = useState<ForecastDay | null>(null);
 
   useEffect(() => {
-    console.log(data);
-
     if (!isLoading && data) {
-      console.log(data.forecast.forecastday[0]);
       setSelectedDay(data.forecast.forecastday[0]);
     }
   }, [data, isLoading, setSelectedDay]);

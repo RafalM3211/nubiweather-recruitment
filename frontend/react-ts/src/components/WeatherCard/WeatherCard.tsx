@@ -15,16 +15,11 @@ export default function WeatherCard(props: Props) {
     queryFn: getCurrentWeather,
   });
 
-  useEffect(() => {
-    console.log(data, props.day);
-  }, [data, props]);
-
   const currentWeather = {
     condition: data?.current.condition.text,
     temp_c: data?.current.temp_c,
     wind_kph: data?.current.wind_kph,
     humidity: data?.current.humidity,
-    pressure_mb: data?.current.pressure_mb,
     icon: data.current.condition.icon,
   };
 
@@ -33,7 +28,6 @@ export default function WeatherCard(props: Props) {
     temp_c: props.day.maxtemp_c,
     wind_kph: props.day.maxwind_kph,
     humidity: props.day.avghumidity,
-    pressure_mb: "",
     icon: props.day.condition.icon,
   };
 
@@ -69,7 +63,7 @@ export default function WeatherCard(props: Props) {
                 width: "min(140px, 23vw)",
               }}
               image={cardData.icon.replace("64x64", "128x128")}
-              title="green iguana"
+              title="Icon illustrating current weather"
             />
             <CardContent sx={{ display: "flex", gap: "1em" }}>
               <Typography variant="h3" component="p">
@@ -93,11 +87,6 @@ export default function WeatherCard(props: Props) {
                 <Typography variant="body2">
                   Humidity: {cardData.humidity}%
                 </Typography>
-                {isDateToday(props.date) && (
-                  <Typography variant="body2">
-                    Pressure: {data.current.pressure_mb}hPa
-                  </Typography>
-                )}
               </Box>
             </CardContent>
           </Box>

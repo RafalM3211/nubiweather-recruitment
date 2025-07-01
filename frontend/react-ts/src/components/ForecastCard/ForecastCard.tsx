@@ -32,7 +32,7 @@ export default function ForecastCard(props: Props) {
       <CardMedia
         sx={{ height: 35, width: 40 }}
         image={props.icon}
-        title="slonecznie"
+        title={`Icon illustrating ${convertDateToWeekDay(props.date)} weather`}
       />
       <Typography sx={{ py: "5px" }} variant="body2">
         {Math.round(props.temp_c)}
