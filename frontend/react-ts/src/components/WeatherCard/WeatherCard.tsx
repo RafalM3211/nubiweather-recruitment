@@ -1,7 +1,19 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
 import weatherIcon from "../../assets/weatherIcon.svg";
+import { getCurrentWeather } from "../../core/weather";
+import { useEffect } from "react";
 
 export default function WeatherCard() {
+  const { data } = useQuery({
+    queryKey: ["weather"],
+    queryFn: getCurrentWeather,
+  });
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <Card sx={{ minWidth: "fit-content", fontSize: "1em" }}>
       <CardContent
