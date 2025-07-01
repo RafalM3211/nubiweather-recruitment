@@ -13,3 +13,14 @@ export function convertDateToWeekDay(dateString: string){
 
     return dayMap.get(date.getDay());
 }
+
+export function isDateToday(dateString: string){
+  const inputDate = new Date(dateString);
+  const today = new Date();
+
+  const isThisYear = inputDate.getFullYear() === today.getFullYear();
+  const isThisMonth = inputDate.getMonth() === today.getMonth();
+  const isThisDayOfMonth = inputDate.getDate() === today.getDate();
+
+  return isThisYear && isThisMonth && isThisDayOfMonth;
+}

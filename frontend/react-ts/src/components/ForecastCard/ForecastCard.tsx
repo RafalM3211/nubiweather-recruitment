@@ -5,6 +5,8 @@ interface Props {
   date: string;
   temp_c: number;
   icon: string;
+  isSelected: boolean;
+  handleClick: () => void;
 }
 
 export default function ForecastCard(props: Props) {
@@ -17,7 +19,12 @@ export default function ForecastCard(props: Props) {
         alignItems: "center",
         cursor: "pointer",
         userSelect: "none",
+
+        borderTop: "3px solid transparent",
+        borderTopColor: props.isSelected ? "primary.main" : "transparent",
+        transition: "0.2s ease",
       }}
+      onClick={props.handleClick}
     >
       <Typography sx={{ p: "5px" }} variant="subtitle2" component="h6">
         {convertDateToWeekDay(props.date)}

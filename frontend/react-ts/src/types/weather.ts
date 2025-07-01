@@ -1,4 +1,9 @@
-export interface DayWeatherData {
+export interface ForecastDay {
+    date: string;
+    day: ForecastDayWeatherData;
+}
+
+export interface ForecastDayWeatherData {
     avghumidity: number;
     maxtemp_c: number;
     maxwind_kph: number;
@@ -7,4 +12,5 @@ export interface DayWeatherData {
       icon: string;
       text: string;
     };
-  }
+}
+

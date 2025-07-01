@@ -2,9 +2,10 @@ import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { getCurrentWeather } from "../../core/weather";
+import { isDateToday } from "../../helpers/helpers";
+import type { ForecastDay } from "../../types/weather";
 
-interface Props {
-  date: string;
+interface Props extends ForecastDay {
   location: string;
 }
 
@@ -15,8 +16,28 @@ export default function WeatherCard(props: Props) {
   });
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log(data, props.day);
+  }, [data, props]);
+
+  const currentWeather = {
+    condition: data?.current.condition.text,
+    temp_c: data?.current.temp_c,
+    wind_kph: data?.current.wind_kph,
+    humidity: data?.current.humidity,
+    pressure_mb: data?.current.pressure_mb,
+    icon: data.current.condition.icon,
+  };
+
+  const forecastWeather = {
+    condition: props.day.condition.text,
+    temp_c: props.day.maxtemp_c,
+    wind_kph: props.day.maxwind_kph,
+    humidity: props.day.avghumidity,
+    pressure_mb: "",
+    icon: props.day.condition.icon,
+  };
+
+  const cardData = isDateToday(props.date) ? currentWeather : forecastWeather;
 
   return (
     <>
@@ -33,20 +54,21 @@ export default function WeatherCard(props: Props) {
             }}
           >
             <Typography sx={{ lineHeight: "normal" }} variant="h4">
-              {data.location.name}
+              {props.location}
             </Typography>
             <Typography variant="body1" color="grey.900">
-              {data.current.condition.text}
+              {cardData.condition}
             </Typography>
           </CardContent>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <CardMedia
               sx={{
                 m: "10px",
+                mt: 0,
                 height: "min(140px, 23vw)",
                 width: "min(140px, 23vw)",
               }}
-              image={data.current.condition.icon.replace("64x64", "128x128")}
+              image={cardData.icon.replace("64x64", "128x128")}
               title="green iguana"
             />
             <CardContent sx={{ display: "flex", gap: "1em" }}>
@@ -60,17 +82,22 @@ export default function WeatherCard(props: Props) {
                   borderLeftColor: "primary.main",
                   borderLeftWidth: "2px",
                   borderLeftStyle: "solid",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
                 }}
               >
                 <Typography variant="body2">
-                  Wind: {data.current.wind_kph}km/h
+                  Wind: {cardData.wind_kph}km/h
                 </Typography>
                 <Typography variant="body2">
-                  Humidity: {data.current.humidity}%
+                  Humidity: {cardData.humidity}%
                 </Typography>
-                <Typography variant="body2">
-                  Pressure: {data.current.pressure_mb}hPa
-                </Typography>
+                {isDateToday(props.date) && (
+                  <Typography variant="body2">
+                    Pressure: {data.current.pressure_mb}hPa
+                  </Typography>
+                )}
               </Box>
             </CardContent>
           </Box>

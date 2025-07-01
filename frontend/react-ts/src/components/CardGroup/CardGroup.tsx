@@ -1,37 +1,59 @@
 import { Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ForecastCard from "../ForecastCard/ForecastCard";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { getForecastWeather } from "../../core/weather";
-import { DayWeatherData } from "../../types/weather";
+import type { ForecastDay } from "../../types/weather";
 
 interface Props {
   location: string;
 }
 
-interface ForecastDay {
-  date: string;
-  day: DayWeatherData;
+interface ForecastData {
+  forecast: {
+    forecastday: ForecastDay[];
+  };
 }
 
 export default function CardGroup(props: Props) {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<ForecastData>({
     queryKey: ["weather"],
     queryFn: getForecastWeather,
   });
 
+  const [selectedDay, setSelectedDay] = useState<ForecastDay | null>(null);
+
   useEffect(() => {
     console.log(data);
-  }, [data]);
+
+    if (!isLoading && data) {
+      console.log(data.forecast.forecastday[0]);
+      setSelectedDay(data.forecast.forecastday[0]);
+    }
+  }, [data, isLoading, setSelectedDay]);
+
+  function handleDaySelect(date: string) {
+    if (data) {
+      const day = data.forecast.forecastday.find((day: ForecastDay) => {
+        return day.date === date;
+      });
+
+      setSelectedDay(day || selectedDay);
+    }
+  }
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || !selectedDay ? (
         <p>loading</p>
       ) : (
         <Box>
-          <WeatherCard date={"2025-07-01"} location={props.location} />
+          <WeatherCard
+            date={selectedDay.date}
+            day={selectedDay.day}
+            location={props.location}
+          />
           <Box
             sx={{
               mt: "10px",
@@ -39,15 +61,21 @@ export default function CardGroup(props: Props) {
               justifyContent: "space-between",
             }}
           >
-            {data.forecast.forecastday.map((day: ForecastDay) => {
-              return (
-                <ForecastCard
-                  date={day.date}
-                  temp_c={day.day.maxtemp_c}
-                  icon={day.day.condition.icon}
-                />
-              );
-            })}
+            {data &&
+              data.forecast.forecastday.map((day: ForecastDay) => {
+                return (
+                  <ForecastCard
+                    key={day.date}
+                    date={day.date}
+                    temp_c={day.day.maxtemp_c}
+                    icon={day.day.condition.icon}
+                    isSelected={day.date === selectedDay.date}
+                    handleClick={() => {
+                      handleDaySelect(day.date);
+                    }}
+                  />
+                );
+              })}
           </Box>
         </Box>
       )}
