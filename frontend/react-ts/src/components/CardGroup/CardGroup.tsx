@@ -4,9 +4,15 @@ import { useEffect } from "react";
 import ForecastCard from "../ForecastCard/ForecastCard";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { getForecastWeather } from "../../core/weather";
+import { DayWeatherData } from "../../types/weather";
 
 interface Props {
   location: string;
+}
+
+interface ForecastDay {
+  date: string;
+  day: DayWeatherData;
 }
 
 export default function CardGroup(props: Props) {
@@ -33,11 +39,15 @@ export default function CardGroup(props: Props) {
               justifyContent: "space-between",
             }}
           >
-            <ForecastCard />
-            <ForecastCard />
-            <ForecastCard />
-            <ForecastCard />
-            <ForecastCard />
+            {data.forecast.forecastday.map((day: ForecastDay) => {
+              return (
+                <ForecastCard
+                  date={day.date}
+                  temp_c={day.day.maxtemp_c}
+                  icon={day.day.condition.icon}
+                />
+              );
+            })}
           </Box>
         </Box>
       )}

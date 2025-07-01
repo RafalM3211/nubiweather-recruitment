@@ -1,7 +1,6 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import weatherIcon from "../../assets/weatherIcon.svg";
 import { getCurrentWeather } from "../../core/weather";
 
 interface Props {
@@ -47,7 +46,7 @@ export default function WeatherCard(props: Props) {
                 height: "min(140px, 23vw)",
                 width: "min(140px, 23vw)",
               }}
-              image={weatherIcon}
+              image={data.current.condition.icon.replace("64x64", "128x128")}
               title="green iguana"
             />
             <CardContent sx={{ display: "flex", gap: "1em" }}>
