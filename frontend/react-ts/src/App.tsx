@@ -62,8 +62,8 @@ function App() {
                 gap: "3em",
               }}
             >
-              <CardGroup />
-              <CardGroup />
+              <CardGroup location="Gliwice" />
+              <CardGroup location="Hamburg" />
             </Box>
           </Container>
         </Box>
