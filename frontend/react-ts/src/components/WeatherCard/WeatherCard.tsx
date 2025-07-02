@@ -37,12 +37,12 @@ export default function WeatherCard(props: Props) {
       {isLoading ? (
         <p>loading</p>
       ) : (
-        <Card sx={{ minWidth: "fit-content", fontSize: "1em" }}>
+        <Card sx={{ width: "69vw", maxWidth: "26rem", fontSize: "1em" }}>
           <CardContent
             sx={{
               display: "flex",
               alignItems: "end",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               gap: "1em",
             }}
           >
@@ -64,7 +64,7 @@ export default function WeatherCard(props: Props) {
               image={cardData.icon?.replace("64x64", "128x128")}
               title="Icon illustrating current weather"
             />
-            <CardContent sx={{ display: "flex", gap: "1em" }}>
+            <CardContent sx={{ display: "flex", gap: "1em", px: "0.1rem" }}>
               <Typography variant="h3" component="p">
                 {Math.round(cardData.temp_c || 26)}
                 {"\u00B0"}C
