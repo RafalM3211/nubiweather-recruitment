@@ -1,5 +1,6 @@
 import { QueryFunctionContext } from "@tanstack/react-query";
 import type { ForecastData, CurrentDay } from "../types/weather";
+import { apiKey } from "../env";
 
 interface QueryParams{
     q: string;
@@ -35,8 +36,6 @@ export async function getForecastWeather(queryContext: QueryFunctionContext<[str
 
 function buildFetchURL(api: string, params: QueryParams){
     const baseURL="https://api.weatherapi.com/v1/";
-    const apiKey=import.meta.env.VITE_API_KEY;
-
 
     const URLWithoutParams=`${baseURL}${api}?key=${apiKey}`;
 
