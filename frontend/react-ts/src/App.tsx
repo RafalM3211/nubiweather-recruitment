@@ -1,5 +1,6 @@
 import { Container, Box, Typography, Link } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import nubisoftBgLogo from "./assets/asdf.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
 import CardGroup from "./components/CardGroup/CardGroup";
@@ -20,7 +21,7 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
 
-            backgroundImage: `url(${nubisoftLogo})`,
+            backgroundImage: `url(${nubisoftBgLogo})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition:
               "-10vw 15vh" /* { xs: "-50vw 10vh", sm: "-10vw 15vh" } */,
