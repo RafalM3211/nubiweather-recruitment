@@ -28,7 +28,7 @@ function App() {
               xs: `url(${nubisoftBgLogo})`,
               sm: `url(${nubisoftBgLogo})`,
             },
-            backgroundRepeat: { xs: "repeat", sm: "no-repeat" },
+            backgroundRepeat: "no-repeat",
             backgroundPosition: { xs: "-50vw 10vh", sm: "-10vw 15vh" },
             backgroundSize: { xs: "cover", sm: "contain" },
           }}
