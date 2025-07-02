@@ -14,6 +14,7 @@ interface Props {
 export default function CardGroup(props: Props) {
   const { data, isLoading } = useQuery({
     queryKey: ["forecast", props.location],
+    throwOnError: true,
     queryFn: getForecastWeather,
   });
 

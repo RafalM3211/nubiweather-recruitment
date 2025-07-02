@@ -4,6 +4,7 @@ import nubisoftBgLogo from "./assets/nubisoftTransparent.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
 import CardGroup from "./components/CardGroup/CardGroup";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 const queryClient = new QueryClient();
 
@@ -62,8 +63,10 @@ function App() {
                 gap: "3em",
               }}
             >
-              <CardGroup location="Gliwice" />
-              <CardGroup location="Hamburg" />
+              <ErrorBoundary>
+                <CardGroup location="Gliwice" />
+                <CardGroup location="Hamburg" />
+              </ErrorBoundary>
             </Box>
           </Container>
         </Box>

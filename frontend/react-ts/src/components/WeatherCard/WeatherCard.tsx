@@ -12,6 +12,7 @@ interface Props extends ForecastDay {
 export default function WeatherCard(props: Props) {
   const { data, isLoading } = useQuery({
     queryKey: ["current", props.location],
+    throwOnError: true,
     queryFn: getCurrentWeather,
   });
 
@@ -36,8 +37,7 @@ export default function WeatherCard(props: Props) {
   return (
     <Card
       sx={{
-        height: "220px",
-        fontSize: "1em",
+        height: "13.8rem",
       }}
     >
       {isLoading ? (
@@ -49,7 +49,8 @@ export default function WeatherCard(props: Props) {
               display: "flex",
               alignItems: "end",
               justifyContent: "flex-start",
-              gap: "1em",
+              gap: "1rem",
+              pb: "1rem",
             }}
           >
             <Typography sx={{ lineHeight: "normal" }} variant="h4">
@@ -70,7 +71,7 @@ export default function WeatherCard(props: Props) {
               image={cardData.icon?.replace("64x64", "128x128")}
               title="Icon illustrating current weather"
             />
-            <CardContent sx={{ display: "flex", gap: "1em", px: "0.1rem" }}>
+            <CardContent sx={{ display: "flex", gap: "1rem", px: "0.1rem" }}>
               <Typography variant="h3" component="p">
                 {Math.round(cardData.temp_c || 26)}
                 {"\u00B0"}C
