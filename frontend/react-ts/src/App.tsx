@@ -25,7 +25,7 @@ function App() {
             alignItems: "center",
 
             backgroundImage: {
-              xs: `url(${nubisoftBgLogo2})`,
+              xs: `url(${nubisoftBgLogo})`,
               sm: `url(${nubisoftBgLogo})`,
             },
             backgroundRepeat: { xs: "repeat", sm: "no-repeat" },
