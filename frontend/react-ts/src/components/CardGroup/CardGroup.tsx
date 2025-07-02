@@ -12,7 +12,7 @@ interface Props {
 
 export default function CardGroup(props: Props) {
   const { data, isLoading } = useQuery({
-    queryKey: ["current", props.location],
+    queryKey: ["forecast", props.location],
     queryFn: getForecastWeather,
   });
 
