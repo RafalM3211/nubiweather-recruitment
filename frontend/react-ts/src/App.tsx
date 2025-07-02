@@ -1,6 +1,6 @@
 import { Container, Box, Typography, Link } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import nubisoftBgLogo from "./assets/asdf.svg";
+import nubisoftBgLogo from "./assets/nubisoftTransparent.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
 import CardGroup from "./components/CardGroup/CardGroup";
