@@ -1,27 +1,40 @@
-# Frontend
-## React
-## Svelte
-## Vue
+# NubiWeather
 
-In this directory you'll find frontend startes for different frontend frameworks. Each starter is preconfigured with Vite and TailwindCSS. Depending on your preference, you can choose between Angular, React, Svelte or Vue and JavaScript or TypeScript versions.
+## About
 
-## What we expect from you?
+https://rafalm3211.github.io/nubiweather-recruitment/
 
-Build simple web application that uses https://www.weatherapi.com/ to show current weather in 2 cities: Gliwice and Hamburg. The application can be built using any technology you like. 
-Functionality that we expect:
-1. Display current weather in Gliwice and Hamburg
-2. Display forecast for next days in Gliwice and Hamburg
+NubiWeather is a simple app made as a recruitment project for Nubisoft. It shows current weather in Gliwice and Hamburg as well as weather forecast for next five days.
+The app shows temperature, wind speed, humidity and weather description for given city.
 
-Those are basic requirements, but feel free to add more features if you like, however don't spend too much time on it - max 8 hours.
+Among the more technical features, this app includes:
 
-## Guidelines for frontend:
+- Loading states
+- Error handling
+- Integration and unit tests
 
-1. Clean and readable code
-2. Responsive design
-3. Usage of modern frontend technologies
-4. Usage of best practices (don't get too fancy, we're looking for clean and readable code)
-5. Usage of version control system (git)
-6. Usage of provided API (we want to see how you use it)
-7. Instructions on how to run the application (we want to see your application in action)
-8. Readme with basic information about the application and features you've implemented
-+ 9. Bonus points for hosting the application on github pages or similar (we don't expect you to pay for hosting) [https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site]
+## Instructions on how to run the application
+
+- Install packages
+
+```bash
+npm i
+```
+
+- Rename `.env.example` to `env` and insert your [Weatherapi](https://www.weatherapi.com/) API key
+
+```
+VITE_API_KEY=your_api_key
+```
+
+- Run the application
+
+```bash
+npm run dev
+```
+
+Tests can be run with `npm run test` command
+
+```bash
+npm run test
+```
