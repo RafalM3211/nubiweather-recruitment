@@ -10,15 +10,9 @@ interface Props {
   location: string;
 }
 
-interface ForecastData {
-  forecast: {
-    forecastday: ForecastDay[];
-  };
-}
-
 export default function CardGroup(props: Props) {
-  const { data, isLoading } = useQuery<ForecastData>({
-    queryKey: ["weather"],
+  const { data, isLoading } = useQuery({
+    queryKey: ["current", props.location],
     queryFn: getForecastWeather,
   });
 

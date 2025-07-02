@@ -1,3 +1,9 @@
+export interface ForecastData {
+  forecast: {
+    forecastday: ForecastDay[];
+  };
+}
+
 export interface ForecastDay {
     date: string;
     day: ForecastDayWeatherData;
@@ -14,3 +20,11 @@ export interface ForecastDayWeatherData {
     };
 }
 
+export interface CurrentDay{
+  current:{
+    condition: {text: string, icon: string};
+    temp_c: number;
+    wind_kph: number;
+    humidity: number;
+  }
+}

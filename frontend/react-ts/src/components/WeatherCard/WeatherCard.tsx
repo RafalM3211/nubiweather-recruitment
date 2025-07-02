@@ -1,6 +1,5 @@
 import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 import { getCurrentWeather } from "../../core/weather";
 import { isDateToday } from "../../helpers/helpers";
 import type { ForecastDay } from "../../types/weather";
@@ -20,7 +19,7 @@ export default function WeatherCard(props: Props) {
     temp_c: data?.current.temp_c,
     wind_kph: data?.current.wind_kph,
     humidity: data?.current.humidity,
-    icon: data.current.condition.icon,
+    icon: data?.current.condition.icon,
   };
 
   const forecastWeather = {
@@ -62,12 +61,12 @@ export default function WeatherCard(props: Props) {
                 height: "min(140px, 23vw)",
                 width: "min(140px, 23vw)",
               }}
-              image={cardData.icon.replace("64x64", "128x128")}
+              image={cardData.icon?.replace("64x64", "128x128")}
               title="Icon illustrating current weather"
             />
             <CardContent sx={{ display: "flex", gap: "1em" }}>
               <Typography variant="h3" component="p">
-                {Math.round(data.current.temp_c)}
+                {Math.round(cardData.temp_c || 26)}
                 {"\u00B0"}C
               </Typography>
               <Box
