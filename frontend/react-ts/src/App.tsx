@@ -24,10 +24,7 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
 
-            backgroundImage: {
-              xs: `url(${nubisoftBgLogo})`,
-              sm: `url(${nubisoftBgLogo})`,
-            },
+            backgroundImage: `url(${nubisoftBgLogo})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: { xs: "-50vw 10vh", sm: "-10vw 15vh" },
             backgroundSize: { xs: "cover", sm: "contain" },
