@@ -9,6 +9,8 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 const queryClient = new QueryClient();
 
 function App() {
+  console.log(nubisoftBgLogo);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AppThemeProvider>
@@ -22,10 +24,9 @@ function App() {
             alignItems: "center",
 
             backgroundImage: `url(${nubisoftBgLogo})`,
-            backgroundRepeat: "no-repeat",
-            backgroundPosition:
-              "-10vw 15vh" /* { xs: "-50vw 10vh", sm: "-10vw 15vh" } */,
-            backgroundSize: "contain" /* { xs: "cover", sm: "contain" } */,
+            backgroundRepeat: { xs: "repeat", sm: "no-repeat" },
+            backgroundPosition: { xs: "-50vw 10vh", sm: "-10vw 15vh" },
+            backgroundSize: { xs: "cover", sm: "contain" },
           }}
         >
           <Container maxWidth="lg">
