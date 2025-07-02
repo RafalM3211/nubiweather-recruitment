@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCurrentWeather } from "../../core/weather";
 import { isDateToday } from "../../helpers/helpers";
 import type { ForecastDay } from "../../types/weather";
+import Loader from "../Loader/Loader";
 
 interface Props extends ForecastDay {
   location: string;
@@ -33,11 +34,16 @@ export default function WeatherCard(props: Props) {
   const cardData = isDateToday(props.date) ? currentWeather : forecastWeather;
 
   return (
-    <>
+    <Card
+      sx={{
+        height: "220px",
+        fontSize: "1em",
+      }}
+    >
       {isLoading ? (
-        <p>loading</p>
+        <Loader />
       ) : (
-        <Card sx={{ width: "69vw", maxWidth: "26rem", fontSize: "1em" }}>
+        <>
           <CardContent
             sx={{
               display: "flex",
@@ -89,8 +95,8 @@ export default function WeatherCard(props: Props) {
               </Box>
             </CardContent>
           </Box>
-        </Card>
+        </>
       )}
-    </>
+    </Card>
   );
 }

@@ -5,6 +5,7 @@ import ForecastCard from "../ForecastCard/ForecastCard";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { getForecastWeather } from "../../core/weather";
 import type { ForecastDay } from "../../types/weather";
+import Loader from "../Loader/Loader";
 
 interface Props {
   location: string;
@@ -35,11 +36,11 @@ export default function CardGroup(props: Props) {
   }
 
   return (
-    <>
+    <Box sx={{ width: "69vw", maxWidth: "26rem", minHeight: "220px" }}>
       {isLoading || !selectedDay ? (
-        <p>loading</p>
+        <Loader text={`Loading weather for ${props.location}...`} />
       ) : (
-        <Box>
+        <>
           <WeatherCard
             date={selectedDay.date}
             day={selectedDay.day}
@@ -68,8 +69,8 @@ export default function CardGroup(props: Props) {
                 );
               })}
           </Box>
-        </Box>
+        </>
       )}
-    </>
+    </Box>
   );
 }
