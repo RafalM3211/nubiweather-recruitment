@@ -1,5 +1,6 @@
 import { Container, Box, Typography, Link } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import nubisoftBgLogo2 from "./assets/asdf.svg";
 import nubisoftBgLogo from "./assets/nubisoftTransparent.svg";
 import nubisoftLogo from "./assets/nubisoft.svg";
 import AppThemeProvider from "./context/theme/theme";
@@ -9,7 +10,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 const queryClient = new QueryClient();
 
 function App() {
-  console.log(nubisoftBgLogo);
+  console.log("asd", nubisoftBgLogo, nubisoftBgLogo2);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -23,7 +24,10 @@ function App() {
             justifyContent: "center",
             alignItems: "center",
 
-            backgroundImage: `url(${nubisoftBgLogo})`,
+            backgroundImage: {
+              xs: `url(${nubisoftBgLogo2})`,
+              sm: `url(${nubisoftBgLogo})`,
+            },
             backgroundRepeat: { xs: "repeat", sm: "no-repeat" },
             backgroundPosition: { xs: "-50vw 10vh", sm: "-10vw 15vh" },
             backgroundSize: { xs: "cover", sm: "contain" },
