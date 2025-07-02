@@ -1,4 +1,4 @@
-import { CurrentDay, ForecastDay } from "../types/weather";
+import { CurrentDay, ForecastData, ForecastDay } from "../types/weather";
 
 export const currentDayFixure = {
     current: {
@@ -10,7 +10,7 @@ export const currentDayFixure = {
   } satisfies CurrentDay;
 
 export const forecastDayFixure = {
-    date: "2025-07-01",
+    date: "2025-06-01",
     day: {
       condition: {
         code: 200,
@@ -22,3 +22,24 @@ export const forecastDayFixure = {
       maxwind_kph: 30,
     },
   } satisfies ForecastDay;
+
+export const forecastDayFixure2 = {
+    date: "2025-06-05",
+    day: {
+      condition: {
+        code: 200,
+        icon: "/weather/128x128/day/200.png",
+        text: "Rainy",
+      },
+      avghumidity: 60,
+      maxtemp_c: 20,
+      maxwind_kph: 50,
+    },
+  } satisfies ForecastDay;
+
+
+export const forecastFixure = {
+    forecast: {
+        forecastday: [...[1,2,3,4].map((index)=>{return {...forecastDayFixure2, date: "2025-06-0"+index}}), forecastDayFixure2]
+    }
+} satisfies ForecastData

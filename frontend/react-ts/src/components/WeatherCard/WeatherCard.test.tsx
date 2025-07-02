@@ -35,7 +35,13 @@ test("Renders with correct values", async () => {
   expect(
     await screen.findByRole("heading", { name: "Gliwice" })
   ).toBeInTheDocument();
-  expect(await screen.findByText(/26\u00B0C/)).toBeInTheDocument();
-  expect(await screen.findByText(/30km\/h/)).toBeInTheDocument();
-  expect(await screen.findByText(/40%/)).toBeInTheDocument();
+  expect(
+    await screen.findByText(`${forecastDayFixure.day.maxtemp_c}\u00B0C`)
+  ).toBeInTheDocument();
+  expect(
+    await screen.findByText(`Wind: ${forecastDayFixure.day.maxwind_kph}km/h`)
+  ).toBeInTheDocument();
+  expect(
+    await screen.findByText(`Humidity: ${forecastDayFixure.day.avghumidity}%`)
+  ).toBeInTheDocument();
 });

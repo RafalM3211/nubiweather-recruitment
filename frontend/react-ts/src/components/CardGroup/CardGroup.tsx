@@ -35,7 +35,6 @@ export default function CardGroup(props: Props) {
       setSelectedDay(day || selectedDay);
     }
   }
-
   return (
     <Box sx={{ width: "69vw", maxWidth: "26rem", minHeight: "220px" }}>
       {isLoading || !selectedDay ? (
